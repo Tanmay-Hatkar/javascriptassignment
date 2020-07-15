@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Image Slideshow</title>
+
+    <script type="text/javascript">
+
+    var i = 0;
+    var images = [];
+    var time;
+
+    images[0] = 'image0.jpg';
+    images[1] = 'image1.jpg';
+    images[2] = 'image2.jpg';
+    images[3] = 'image3.jpg';
+    images[4] = 'image4.jpg';
+    images[5] = 'image5.jpg';
+    images[6] = 'image6.jpg';
+    images[7] = 'image7.jpg';
+    images[8] = 'image8.jpg';
+    images[9] = 'image9.jpg';
+
+            function changeImg(){
+              time = document.getElementById("userTime").value;
+              console.log(time);
+             document.slide.src = images[i];
+
+              if(i < images.length - 1){
+                i++
+              }
+              else{
+                i=0;
+              }
+
+              setTimeout("changeImg()",time*1000);
+            }
+
+            function calculator(input) {
+                a = document.getElementById("inputA").value;
+                b = document.getElementById("inputB").value;
+                var x = document.getElementById("out");
+                var y = document.getElementById('sign');
+                console.log(input);
+                if (isNaN(a) || isNaN(b)) {
+                    text = "Input not valid";
+                } else {
+                    text = "Input Valid";
+                }
+                document.getElementById("demo").innerHTML = text;
+                if (input == '+') {
+                    x.innerHTML = parseInt(a) + parseInt(b);
+                    y.innerHTML = '+';
+                } else if (input == '-') {
+                    x.innerHTML = parseInt(a) - parseInt(b);
+                    y.innerHTML = '-';
+                } else if (input == '/') {
+                    x.innerHTML = parseInt(a) / parseInt(b);
+                    y.innerHTML = '/';
+                } else {
+                    x.innerHTML = parseInt(a) * parseInt(b);
+                    y.innerHTML = '*';
+                }
+                console.log(x);
+            }
+
+
+          function ValidateEmail() {
+                var inputText=document.getElementById('email').value;
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if (inputText.match(mailformat)) {
+                    document.getElementById('email').style.backgroundColor = "green";
+                } else {
+                    document.getElementById('email').style.backgroundColor = "red";
+                }
+            }
+
+    </script>
+    <style>
+    Table,tg,td{
+      border:1px solid black;
+    }
+    </style>
+  </head>
+  <body>
+    <table style="width:100%">
+      <tr>
+        <td>
+          <input type="number" id="userTime" value='1'><br><br>
+          <button onclick="changeImg()">Submit</button>
+        </td>
+        <td>
+          <img name="slide" width="200" height="100">
+        </td>
+      </tr>
+      <tr>
+          <td>
+              <input type='number' id='inputA' placeholder="input 1">
+              <span id="sign"></span>
+              <input type='number' id="inputB" placeholder="input 2">
+              <br>
+              <p id='demo'></p><br>
+              <button onclick="calculator('+')">+</button>
+              <button onclick="calculator()">-</button>
+              <button onclick="calculator()">/</button>
+              <button onclick="calculator()">*</button>
+          </td>
+          <td>
+              <p id='out'></p>
+          </td>
+      </tr>
+    <tr>
+        <td><input type="text" id='email' onkeyup="ValidateEmail()"></td>
+    </tr>
+  </table>
+  </body>
+</html>
